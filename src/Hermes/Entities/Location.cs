@@ -11,5 +11,10 @@
         public string City { get; set; }
 
         public string StateProvince { get; set; }
+
+        public override string ToString()
+        {
+            return $"{City} ({LocationId})";
+        }
     }
 }
