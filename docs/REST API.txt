@@ -1,0 +1,66 @@
+Employee:
+	URL:
+		- /employees (GET - find All)
+		- /employees/{id} (GET - find One)
+		- /employees (POST - create, body - Obj JSON)
+		- /employees (PUT - update, body - Obj JSON)
+		- /employees/{id} (DELETE - delete)		
+	JSON:
+		{
+			"commissionPct": null,
+			"departmentId": /*Obiect de tip Department*/,
+			"email": null,
+			"employeeId": 5104,
+			"firstName": "as",
+			"hireDate": null,
+			"jobId": /*Obiect de tip Job*/,
+			"lastName": "sdsadsa",
+			"managerId": /*Obiect de tip Employee*/,
+			"phoneNumber": "34234",
+			"salary": null
+		}
+              
+Job:
+	URL:
+		- /jobs (GET - find All)
+		- /jobs/{id} (GET - find One)
+		- /jobs (POST - create, body - Obj JSON)
+		- /jobs (PUT - update, body - Obj JSON)
+		- /jobs/{id} (DELETE - delete)
+	JSON:
+		{
+			"jobId": "FI_MGR",
+			"jobTitle": "Finance Manager",
+			"maxSalary": 16000,
+			"minSalary": 8500
+		}
+
+Department:
+	URL:
+		- /departments (GET - find All)
+		- /departments/{id} (GET - find One)
+		- /departments (POST - create, body - Obj JSON)
+		- /departments (PUT - update, body - Obj JSON)
+		- /departments/{id} (DELETE - delete)
+	JSON:
+		{
+			"departmentId": 40,
+			"departmentName": "Human Resources",
+			"locationId": /*Obiect de tip Location*/
+		}
+
+Location:
+	URL: 
+		- /locations (GET - find All)
+		- /locations/{id} (GET - find One)
+		- /locations (POST - create, body - Obj JSON)
+		- /locations (PUT - update, body - Obj JSON)
+		- /locations/{id} (DELETE - delete)
+	JSON:
+		{
+			"city": "Oxford",
+			"locationId": 2500,
+			"postalCode": "OX9 9ZB",
+			"stateProvince": "Oxford",
+			"streetAddress": "Magdalen Centre, The Oxford Science Park"
+		}
