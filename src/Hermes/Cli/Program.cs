@@ -15,6 +15,11 @@ namespace Cli
                 {
                     Console.WriteLine(location);
                 }
+
+                foreach (var department in db.Departments)
+                {
+                    Console.WriteLine(department);
+                }
             }
 
             Console.ReadKey(true);
