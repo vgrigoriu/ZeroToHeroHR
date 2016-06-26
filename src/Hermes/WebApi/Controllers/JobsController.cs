@@ -1,4 +1,5 @@
 ﻿using DatabaseAccessLayer;
+using Entities;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -27,6 +28,20 @@ namespace WebApi.Controllers
                 }
 
                 return Ok(job);
+            }
+        }
+
+        public async Task<IHttpActionResult> Post(Job job)
+        {
+            // todo: validation
+
+            using (var db = new HRContext())
+            {
+                db.Jobs.Add(job);
+
+                await db.SaveChangesAsync();
+
+                return Created($"jobs/{job.JobId}", job);
             }
         }
     }
