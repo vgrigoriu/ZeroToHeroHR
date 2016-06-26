@@ -17,20 +17,22 @@ namespace WebApi.Controllers
             }
         }
 
-        //public async Task<IHttpActionResult> Get(string id)
-        //{
-        //    using (var db = new HRContext())
-        //    {
-        //        var job = await db.Jobs.FindAsync(id);
+        public async Task<IHttpActionResult> Get(int id)
+        {
+            using (var db = new HRContext())
+            {
+                var department = await db.Departments
+                    .Include(dep => dep.Location)
+                    .SingleOrDefaultAsync(dep => dep.DepartmentId == id);
 
-        //        if (job == null)
-        //        {
-        //            return NotFound();
-        //        }
+                if (department == null)
+                {
+                    return NotFound();
+                }
 
-        //        return Ok(job);
-        //    }
-        //}
+                return Ok(department);
+            }
+        }
 
         //public async Task<IHttpActionResult> Post(Job job)
         //{
