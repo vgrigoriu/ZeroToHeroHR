@@ -25,6 +25,11 @@ namespace Cli
                 {
                     Console.WriteLine(job);
                 }
+
+                foreach (var employee in db.Employees)
+                {
+                    Console.WriteLine(employee);
+                }
             }
 
             Console.ReadKey(true);

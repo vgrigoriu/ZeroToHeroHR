@@ -14,6 +14,8 @@ namespace DatabaseAccessLayer
 
         public DbSet<Job> Jobs { get; set; }
 
+        public DbSet<Employee> Employees { get; set; }
+
         public HRContext()
             : base("Hermes")
         {
@@ -38,8 +40,8 @@ namespace DatabaseAccessLayer
             {
                 foreach (var prop in association.Constraint.ToProperties)
                 {
-                    // This comes in as Location_LocationId; we set it to only LocationId
-                    prop.Name = prop.Name.Substring(prop.Name.IndexOf('_') + 1);
+                    // This comes in as Manager_EmployeeId; we set it to ManagerId
+                    prop.Name = prop.Name.Substring(0, prop.Name.IndexOf('_')) + "Id";
                 }
             }
         }
