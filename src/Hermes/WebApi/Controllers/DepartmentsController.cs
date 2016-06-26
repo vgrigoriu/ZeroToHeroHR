@@ -52,26 +52,25 @@ namespace WebApi.Controllers
             }
         }
 
-        //public async Task<IHttpActionResult> Put(Job job)
-        //{
-        //    using (var db = new HRContext())
-        //    {
-        //        var existingJob = await db.Jobs.FindAsync(job.JobId);
+        public async Task<IHttpActionResult> Put(Department department)
+        {
+            using (var db = new HRContext())
+            {
+                var existingDepartment = await db.Departments.FindAsync(department.DepartmentId);
 
-        //        if (existingJob == null)
-        //        {
-        //            return NotFound();
-        //        }
+                if (existingDepartment == null)
+                {
+                    return NotFound();
+                }
 
-        //        existingJob.JobTitle = job.JobTitle;
-        //        existingJob.MinSalary = job.MinSalary;
-        //        existingJob.MaxSalary = job.MaxSalary;
+                // we can only rename departments, not move them to a different location
+                existingDepartment.DepartmentName = department.DepartmentName;
 
-        //        await db.SaveChangesAsync();
+                await db.SaveChangesAsync();
 
-        //        return Ok(existingJob);
-        //    }
-        //}
+                return Ok(existingDepartment);
+            }
+        }
 
         //public async Task<IHttpActionResult> Delete(string id)
         //{
