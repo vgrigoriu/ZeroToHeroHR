@@ -65,5 +65,23 @@ namespace WebApi.Controllers
                 return Ok(existingJob);
             }
         }
+
+        public async Task<IHttpActionResult> Delete(string id)
+        {
+            using (var db = new HRContext())
+            {
+                var existingJob = await db.Jobs.FindAsync(id);
+
+                if (existingJob == null)
+                {
+                    return NotFound();
+                }
+
+                db.Jobs.Remove(existingJob);
+                await db.SaveChangesAsync();
+
+                return Ok();
+            }
+        }
     }
 }
