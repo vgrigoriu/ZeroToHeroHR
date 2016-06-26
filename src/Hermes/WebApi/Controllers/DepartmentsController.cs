@@ -72,22 +72,23 @@ namespace WebApi.Controllers
             }
         }
 
-        //public async Task<IHttpActionResult> Delete(string id)
-        //{
-        //    using (var db = new HRContext())
-        //    {
-        //        var existingJob = await db.Jobs.FindAsync(id);
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            using (var db = new HRContext())
+            {
+                var existingDepartment = await db.Departments.FindAsync(id);
 
-        //        if (existingJob == null)
-        //        {
-        //            return NotFound();
-        //        }
+                if (existingDepartment == null)
+                {
+                    return NotFound();
+                }
 
-        //        db.Jobs.Remove(existingJob);
-        //        await db.SaveChangesAsync();
+                // todo: handle employees from this department
+                db.Departments.Remove(existingDepartment);
+                await db.SaveChangesAsync();
 
-        //        return Ok();
-        //    }
-        //}
+                return Ok();
+            }
+        }
     }
 }
