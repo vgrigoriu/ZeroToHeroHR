@@ -34,19 +34,23 @@ namespace WebApi.Controllers
             }
         }
 
-        //public async Task<IHttpActionResult> Post(Job job)
-        //{
-        //    // todo: validation
+        public async Task<IHttpActionResult> Post(Department department)
+        {
+            // todo: validation
+            // todo: id should not be client-generated
 
-        //    using (var db = new HRContext())
-        //    {
-        //        db.Jobs.Add(job);
+            using (var db = new HRContext())
+            {
+                // don't insert a new location, use the existing one
+                db.Entry(department.Location).State = EntityState.Unchanged;
 
-        //        await db.SaveChangesAsync();
+                db.Departments.Add(department);
 
-        //        return Created($"jobs/{job.JobId}", job);
-        //    }
-        //}
+                await db.SaveChangesAsync();
+
+                return Created($"departments/{department.DepartmentId}", department);
+            }
+        }
 
         //public async Task<IHttpActionResult> Put(Job job)
         //{
