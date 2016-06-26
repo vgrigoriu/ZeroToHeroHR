@@ -9,7 +9,10 @@ namespace DatabaseAccessLayer
     public class HRContext : DbContext
     {
         public DbSet<Location> Locations { get; set; }
+
         public DbSet<Department> Departments { get; set; }
+
+        public DbSet<Job> Jobs { get; set; }
 
         public HRContext()
             : base("Hermes")
