@@ -44,5 +44,26 @@ namespace WebApi.Controllers
                 return Created($"jobs/{job.JobId}", job);
             }
         }
+
+        public async Task<IHttpActionResult> Put(Job job)
+        {
+            using (var db = new HRContext())
+            {
+                var existingJob = await db.Jobs.FindAsync(job.JobId);
+
+                if (existingJob == null)
+                {
+                    return NotFound();
+                }
+
+                existingJob.JobTitle = job.JobTitle;
+                existingJob.MinSalary = job.MinSalary;
+                existingJob.MaxSalary = job.MaxSalary;
+
+                await db.SaveChangesAsync();
+
+                return Ok(existingJob);
+            }
+        }
     }
 }
