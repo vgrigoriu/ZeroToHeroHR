@@ -5,8 +5,25 @@
         <title>Hermes UI - using React</title>
         <script src="https://fb.me/react-15.2.1.min.js"></script>
         <script src="https://fb.me/react-dom-15.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
     </head>
     <body>
-        <div>cucu</div>
+        <div id="content"></div>
+        <script type="text/babel">
+            var LocationList = React.createClass({
+                render: function() {
+                    return (
+                        <div className="locationList">
+                            Aici e o listă de locații
+                        </div>
+                    );
+                }
+            });
+
+            ReactDOM.render(
+                <LocationList />,
+                document.getElementById('content')
+            );
+        </script>
     </body>
 </html>
