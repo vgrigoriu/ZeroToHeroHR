@@ -3,25 +3,63 @@
     <head>
         <meta charset="utf-8" />
         <title>Hermes UI - using React</title>
-        <script src="https://fb.me/react-15.2.1.min.js"></script>
-        <script src="https://fb.me/react-dom-15.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
     </head>
     <body>
         <div id="content"></div>
         <script type="text/babel">
+            var Location = React.createClass({
+                render: function() {
+                    return (
+                        <div className="location">
+                            <h2 className="locationCity">
+                                {this.props.city}
+                            </h2>
+                            {this.props.streetAddress}
+                        </div>
+                    );
+                }
+            });
+
             var LocationList = React.createClass({
                 render: function() {
                     return (
                         <div className="locationList">
-                            Aici e o listă de locații
+                            <Location city="Pașcani"
+                                      streetAddress="str. Cucului nr. 17C" />
+                            <Location city="Dorohoi"
+                                      streetAddress="str. Vacii nr. 129" />
+                        </div>
+                    );
+                }
+            });
+
+            var LocationForm = React.createClass({
+                render: function() {
+                    return (
+                        <div className="locationForm">
+                            Aici se vor putea crea locații noi
+                        </div>
+                    );
+                }
+            });
+
+            var Locations = React.createClass({
+                render: function() {
+                    return (
+                        <div className="locations">
+                            <h1>Locații</h1>
+                            <LocationList />
+                            <LocationForm />
                         </div>
                     );
                 }
             });
 
             ReactDOM.render(
-                <LocationList />,
+                <Locations />,
                 document.getElementById('content')
             );
         </script>
